@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
               return Container(
-                height: 100,
+                height: 90,
                 width: MediaQuery.of(context).size.width * 40,
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -46,18 +46,21 @@ class HomePage extends StatelessWidget {
                     border: Border.all(
                         color: Colors.white.withOpacity(0.2), width: 1.0),
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(0)),
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0, bottom: 20),
+                    padding: const EdgeInsets.only(
+                        left: 20.0, right: 20, bottom: 20, top: 10),
                     child: GNav(
-                        tabBorderRadius: 10,
+                        tabBorder: Border.all(
+                            color: Colors.white.withOpacity(0.2), width: 1.0),
+                        tabBorderRadius: 50,
                         color: Colors.white,
                         activeColor: Colors.black,
                         selectedIndex: tabsRouter.activeIndex,
                         onTabChange: tabsRouter.setActiveIndex,
                         tabBackgroundColor:
                             Theme.of(context).colorScheme.primary,
-                        padding: const EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(15),
                         backgroundColor: Colors.transparent,
                         tabs: [
                           GButton(

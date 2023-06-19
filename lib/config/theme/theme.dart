@@ -48,10 +48,9 @@ class AppTheme {
 
   static final TextTheme _lightTextTheme = TextTheme(
       headline1:
-          _lightHeadingText.copyWith(fontSize: 36, fontWeight: FontWeight.w400),
-      headline2: _lightHeadingText.copyWith(
-        fontSize: 22,
-      ),
+          _lightHeadingText.copyWith(fontSize: 26, fontWeight: FontWeight.w400),
+      headline2:
+          _lightHeadingText.copyWith(fontSize: 14, fontWeight: FontWeight.w700),
       headline3: _lightHeadingText.copyWith(fontSize: 22),
       headline4: _lightHeadingText.copyWith(fontSize: 20),
       headline5: _lightHeadingText.copyWith(fontSize: 18),
@@ -71,7 +70,7 @@ class AppTheme {
   static final TextTheme _darkTextTheme = TextTheme(
     headline1: _darkThemeHeadingTextStyle.copyWith(
         fontSize: 36, fontWeight: FontWeight.w100),
-    headline2: _darkThemeHeadingTextStyle.copyWith(fontSize: 24),
+    headline2: _darkThemeHeadingTextStyle.copyWith(fontSize: 20),
     headline3: _darkThemeHeadingTextStyle.copyWith(fontSize: 22),
     headline4: _darkThemeHeadingTextStyle.copyWith(fontSize: 20),
     headline5: _darkThemeHeadingTextStyle.copyWith(fontSize: 18),
