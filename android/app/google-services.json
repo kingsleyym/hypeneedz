@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "691828105579",
+    "project_id": "hypeneedz-8cb89",
+    "storage_bucket": "hypeneedz-8cb89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691828105579:android:53fb0604bd9d9a4e70ac2e",
+        "android_client_info": {
+          "package_name": "com.example.hypeneedz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691828105579-4dmeru0drefh4tdguju9gl1h075o5k8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEoTaK2CIU98EX4f37LSTqwv6Ne0K4cEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691828105579-4dmeru0drefh4tdguju9gl1h075o5k8e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "691828105579-ppk5us7b7f1k5s7rh0gtbeoloh9s59hc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hypeneedzApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691828105579:android:abfa5785384e998b70ac2e",
+        "android_client_info": {
+          "package_name": "com.example.hypeneedz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691828105579-4dmeru0drefh4tdguju9gl1h075o5k8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEoTaK2CIU98EX4f37LSTqwv6Ne0K4cEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691828105579-4dmeru0drefh4tdguju9gl1h075o5k8e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "691828105579-ppk5us7b7f1k5s7rh0gtbeoloh9s59hc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hypeneedzApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
