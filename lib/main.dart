@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:hypeneedz/api/theme_service.dart';
 import 'package:hypeneedz/application/auth/auth/auth_bloc.dart';
+import 'package:hypeneedz/application/news/observe/bloc/observer_bloc_bloc.dart';
+
 import 'package:hypeneedz/infrastructure/repository/product_repo.dart';
 import 'package:hypeneedz/config/theme/theme.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hypeneedz/injection.dart' as di;
 import 'application/products/watchert/product_bloc.dart';
 import 'firebase_options.dart';
-import 'home.dart';
+
 import 'injection.dart';
 import 'package:hypeneedz/config/routes/routes.gr.dart' as r;
 
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
               create: (context) =>
                   sl<AuthBloc>()..add(AuthCheckRequestedEvent()),
             ),
+            BlocProvider(
+                create: (context) => sl<NewsObserverBloc>()..add(ObserveAll())),
           ],
           child: MaterialApp.router(
             routeInformationParser: _appRouter.defaultRouteParser(),

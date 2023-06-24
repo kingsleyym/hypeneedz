@@ -54,6 +54,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   fade_out_particle: ^1.2.1
   line_icons: ^2.0.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

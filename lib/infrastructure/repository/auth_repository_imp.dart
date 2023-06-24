@@ -11,6 +11,7 @@ import 'package:hypeneedz/infrastructure/extensions/firebase_user_maper.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth firebaseAuth;
+  final firestore = FirebaseFirestore.instance;
 
   AuthRepositoryImpl({required this.firebaseAuth});
 
@@ -28,6 +29,22 @@ class AuthRepositoryImpl implements AuthRepository {
         "id": user.uid,
         "email": email,
         "password": password,
+      });
+      await firestore.collection("news").doc("123344").set({
+        'title': user.uid,
+        'author': "Luca Kingsley",
+        'thumb':
+            "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/db7b9b71738001.5bcf8306d0989.png",
+        'images': [
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/db7b9b71738001.5bcf8306d0989.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/db7b9b71738001.5bcf8306d0989.png"
+        ],
+        'desc': "sljdfkjladfj slkdfjkl;asdf alsjkdf",
+        'body': "ksfjdkk skjfkls fljksdf j",
+        'body2': "new body",
+        'category': "news",
+        'shoeId': 'shoeId',
+        'serverTimeStamp': DateTime.now(),
       });
       return right(unit);
     } on FirebaseAuthException catch (e) {
