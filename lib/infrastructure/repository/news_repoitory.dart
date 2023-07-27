@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:hypeneedz/core/failures/newsFailure.dart';
+import 'package:hypeneedz/core/failures/newsfailure.dart';
 import 'package:hypeneedz/domain/repository/news_repoitory.dart';
 
 import '../../domain/Entitys/news.dart';
@@ -54,15 +52,41 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   @override
-  Future<Either<NewsFailure, Unit>> delete(News news) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<NewsFailure, Unit>> delete(News news) async {
+    try {
+      final newsCollection = firestore.collection('news');
+      final newsModel = NewsModel.fromDomain(news);
+
+      newsCollection.doc(newsModel.id).delete();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return Future.value(left(InsufficientPermisssons()));
+      } else {
+        return Future.value(left(UnexpectedFailure()));
+      }
+    } catch (e) {
+      return Future.value(left(UnexpectedFailure()));
+    }
   }
 
   @override
-  Future<Either<NewsFailure, Unit>> update(News news) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<NewsFailure, Unit>> update(News news) async {
+    try {
+      final newsCollection = firestore.collection('news');
+      final newsModel = NewsModel.fromDomain(news);
+
+      newsCollection.doc(newsModel.id).update(newsModel.toMap());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return Future.value(left(InsufficientPermisssons()));
+      } else {
+        return Future.value(left(UnexpectedFailure()));
+      }
+    } catch (e) {
+      return Future.value(left(UnexpectedFailure()));
+    }
   }
 
   @override

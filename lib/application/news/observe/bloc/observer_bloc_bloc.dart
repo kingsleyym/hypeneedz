@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hypeneedz/domain/repository/news_repoitory.dart';
 
-import '../../../../core/failures/newsFailure.dart';
+import '../../../../core/failures/newsfailure.dart';
 import '../../../../domain/Entitys/news.dart';
 
 part 'observer_bloc_event.dart';

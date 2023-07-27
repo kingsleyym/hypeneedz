@@ -22,10 +22,8 @@ class AuthRepositoryImpl implements AuthRepository {
       await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       final user = firebaseAuth.currentUser;
-      final doc = await FirebaseFirestore.instance
-          .collection("users")
-          .doc(user!.uid)
-          .set({
+      final doc = FirebaseFirestore.instance;
+      doc.collection("users").doc(user!.uid).set({
         "id": user.uid,
         "email": email,
         "password": password,
@@ -123,16 +121,13 @@ class AuthRepositoryImpl implements AuthRepository {
       if (!userSnapshot.exists) {
         await firestore.collection("users").doc(userId).set({
           "id": userId,
-          "email": user.email,
-          "createdAt": DateTime.now().timeZoneName,
+          "bio": user.email,
           "admin": false,
-          "bio": "",
+          "private": false,
           "name": "",
           "image": user.photoURL,
           "username": user.displayName,
-          "followers": 0,
-          "following": 0,
-          "courses": 0,
+          "number": "",
         });
       }
 

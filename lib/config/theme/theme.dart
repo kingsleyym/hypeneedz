@@ -1,14 +1,16 @@
+// ignore_for_file: deprecated_member_use, unused_field
+
 import 'package:flutter/material.dart';
 
 class AppTheme {
   AppTheme._();
 
-  static final Color _lightPrimaryColor = Color.fromRGBO(248, 248, 248, 1);
+  static const Color _lightPrimaryColor = Color.fromRGBO(248, 248, 248, 1);
   static final Color _lightPrimaryVariantColor = Colors.blueGrey.shade800;
   static final Color _lightOnPrimaryColor = Colors.blueGrey.shade200;
   static const Color _lightTextColorPrimary = Color.fromARGB(255, 0, 0, 0);
   static const Color _appbarColorLight = Colors.blue;
-  static final Color _lightSecondaryColor = Color.fromARGB(255, 0, 0, 0);
+  static const Color _lightSecondaryColor = Color.fromARGB(255, 0, 0, 0);
 
   static final Color _darkPrimaryColor = Colors.blueGrey.shade900;
   static const Color _darkPrimaryVariantColor = Colors.black;
@@ -105,7 +107,7 @@ class AppTheme {
           primary: _lightPrimaryColor,
           onPrimary: _lightOnPrimaryColor,
           secondary: _lightSecondaryColor,
-          tertiary: Color.fromARGB(255, 251, 109, 0),
+          tertiary: const Color.fromARGB(255, 251, 109, 0),
           primaryContainer: _lightPrimaryVariantColor),
       textTheme: _lightTextTheme);
 
@@ -119,7 +121,7 @@ class AppTheme {
       colorScheme: ColorScheme.dark(
         primary: _darkPrimaryColor,
         secondary: _darkSecondaryColor,
-        tertiary: Color.fromARGB(255, 251, 109, 0),
+        tertiary: const Color.fromARGB(255, 251, 109, 0),
         onPrimary: _darkOnPrimaryColor,
         primaryContainer: _darkPrimaryVariantColor,
       ),

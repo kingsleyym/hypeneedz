@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hypeneedz/domain/Entitys/uuid.dart';
 
@@ -37,7 +34,7 @@ class News extends Equatable {
       title: '',
       author: '',
       thumb: '',
-      images: [],
+      images: const [],
       desc: '',
       body: '',
       body2: '',

@@ -1,20 +1,27 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hypeneedz/domain/repository/news_repoitory.dart';
-import 'package:hypeneedz/infrastructure/repository/news_repoitory.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../application/news/observe/bloc/observer_bloc_bloc.dart';
+import '../../../config/routes/routes.gr.dart';
 import '../../../injection.dart';
+import '../../widgets/pagecard.dart';
 
 class NewsHeader extends StatelessWidget {
-  const NewsHeader({
+  NewsHeader({
     super.key,
     required this.themeData,
   });
 
   final ThemeData themeData;
+
+  final controller = PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +29,6 @@ class NewsHeader extends StatelessWidget {
       builder: (context, state) {
         if (state is NewsObserverInitial) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.37,
-            width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -31,7 +36,6 @@ class NewsHeader extends StatelessWidget {
                         ("https://i.pinimg.com/564x/2a/17/2a/2a172a1487683fd1d930f315aeae5c0d.jpg")))),
           );
         } else if (state is NewsObserverLoading) {
-          print('lol');
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: Shimmer.fromColors(
@@ -39,7 +43,7 @@ class NewsHeader extends StatelessWidget {
               highlightColor: themeData.colorScheme.onPrimary,
               child: Container(
                 height: 200,
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(30)),
@@ -47,62 +51,57 @@ class NewsHeader extends StatelessWidget {
             ),
           );
         } else if (state is NewsObserverSucsses) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.37,
-            width: MediaQuery.of(context).size.width,
-            child: PageView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: state.news[0].images.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    print(state.news[index].views);
-                    sl<NewsRepository>().updateViews(state.news[index]);
-                  },
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.37,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(state.news[0].images[index]))),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                            Color.fromARGB(41, 0, 0, 0),
-                            Colors.black
-                          ])),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 25, bottom: 60),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                state.news[0].title,
-                                style: themeData.textTheme.headline1!.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white),
-                              ),
-                              Text(
-                                state.news[0].body,
-                                style: themeData.textTheme.bodyText1!.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              )
-                            ]),
-                      ),
+          return Stack(children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: PageView.builder(
+                controller: controller,
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.news.length,
+                itemBuilder: (context, index) {
+                  return PageCard(
+                    themeData: themeData,
+                    onTab: () {
+                      sl<NewsRepository>().updateViews(state.news[index]);
+                      AutoRouter.of(context)
+                          .push(NewsDetailRoute(news: state.news[index]));
+                    },
+                    onLong: () {
+                      AutoRouter.of(context).push(NewsFormRoute(news: null));
+                    },
+                    body: state.news[index].desc,
+                    thumb: state.news[index].thumb,
+                    title: state.news[index].title,
+                    views: state.news[index].views!,
+                  );
+                },
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: 20,
+                child: Column(children: [
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SmoothPageIndicator(
+                      controller: controller,
+                      count: state.news.length,
+                      effect: const WormEffect(
+                          dotColor: Colors.black,
+                          activeDotColor: Colors.white,
+                          dotHeight: 8,
+                          dotWidth: 8,
+                          spacing: 5),
                     ),
                   ),
-                );
-              },
+                ]),
+              ),
             ),
-          );
+          ]);
         } else if (state is NewsObserverFailure) {
           return const Center(child: Text("Failure"));
         }

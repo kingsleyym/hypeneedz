@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +18,6 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     final themeText = Theme.of(context).textTheme;
-    final themeColor = Theme.of(context).colorScheme;
     final observeBloc = sl<NewsObserverBloc>()..add(ObserveAll());
 
     return BlocProvider<NewsObserverBloc>(
@@ -129,7 +130,7 @@ class LandingPage extends StatelessWidget {
               ),
             ),
 
-            Container(
+            SizedBox(
               height: 180,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -263,7 +264,7 @@ class Picturese extends StatelessWidget {
             onTap: () {
               AutoRouter.of(context).push(const ShoesPageRoute());
             },
-            child: Container(
+            child: SizedBox(
               height: 100,
               width: 100,
               child: Container(

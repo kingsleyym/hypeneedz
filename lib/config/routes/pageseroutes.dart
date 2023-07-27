@@ -2,12 +2,11 @@ import 'package:auto_route/auto_route.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:glass/glass.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hypeneedz/config/routes/routes.gr.dart';
 import 'package:line_icons/line_icons.dart';
 
-import 'package:provider/provider.dart';
 import '../../application/auth/auth/auth_bloc.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,7 +26,7 @@ class HomePage extends StatelessWidget {
         ],
         child: AutoTabsScaffold(
             extendBody: true,
-            routes: [
+            routes: const [
               LandingPageRoute(),
               TodoPageRoute(),
               NewsPageRoute(),
@@ -62,7 +61,7 @@ class HomePage extends StatelessWidget {
                             Theme.of(context).colorScheme.primary,
                         padding: const EdgeInsets.all(15),
                         backgroundColor: Colors.transparent,
-                        tabs: [
+                        tabs: const [
                           GButton(
                             icon: Icons.home,
                             iconSize: 20,

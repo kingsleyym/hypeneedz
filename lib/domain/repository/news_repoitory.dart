@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:hypeneedz/core/failures/newsFailure.dart';
+import 'package:hypeneedz/core/failures/newsfailure.dart';
 
 import '../Entitys/news.dart';
 
