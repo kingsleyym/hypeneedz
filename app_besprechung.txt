@@ -1,0 +1,112 @@
+
+
+
+
+
+News
+    -status
+        checkt
+    - Title
+    - Liste 
+        -text
+        -bild
+    - categorien
+    - description
+    - images
+    - thumbnail
+    - views 
+    - likes
+    - datum
+    - komentare
+    - shoes
+    - new Release
+
+New Releases
+
+    - shoes
+    - views
+    - like & dislike
+    - komentare
+    
+
+Product 
+    Shoes
+
+        - product, gerucht, Release
+            Release chceckt datum wenn datum today dann product
+        
+        - id
+        - Title
+        - description
+        - images
+        - thumbnail
+        - views
+        - Marke
+        - Model
+        - Colorway
+        - Release Date
+        - oberflache    
+        - sole
+        - sku
+        - tags
+        - affiliate links
+        
+
+
+
+
+
+
+    
+
+
+User 
+    
+    UserRollen
+
+        InhouseUser
+            -admin
+                nur adim kann schuhe hinzufugen 
+
+                prductmangager
+                -moderator
+                        Kann komentare bearbeiten und loschen 
+                        Kann User blockieren  
+                
+                -Redakteur
+                    -kann News erstellen
+                    -kann News bearbeiten
+                    -kann New Releases erstellen
+                    -kann New Releases bearbeiten
+
+        -ExterneUser
+            -user   
+                -Merkliste
+                -shopify
+                    -adresse
+                -username
+                -email 
+                -email verified
+                
+        
+
+    
+    
+
+
+komentare
+    user
+    text
+    datum
+    likes
+    report
+    comment
+
+
+    
+
+
+    
+
+
+
