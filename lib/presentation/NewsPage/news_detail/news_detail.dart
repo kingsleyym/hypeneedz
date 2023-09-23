@@ -2,15 +2,17 @@
 // ignore: file_names
 // ignore_for_file: deprecated_member_use
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/profile/bloc/profile_bloc.dart';
 import '../../../domain/Entitys/news.dart';
 import '../../../injection.dart';
 
-class NewsDetail extends StatelessWidget {
+@RoutePage()
+class NewsDetailPage extends StatelessWidget {
   final News? news;
-  const NewsDetail({
+  const NewsDetailPage({
     Key? key,
     this.news,
   }) : super(key: key);
@@ -40,28 +42,28 @@ class NewsDetail extends StatelessWidget {
           body: Column(
             children: [
               Container(
-                clipBehavior: Clip.hardEdge,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        spreadRadius: 1,
-                        blurRadius: 7,
-                        offset: const Offset(2, 2),
-                      ),
-                      
-                    ],
-                    color: Colors.transparent),
-                height: size.height * 0.38,
-                child: PageView.builder(itemCount: news?.images.length, itemBuilder: (BuildContext context, int index) {
-                  return Container(decoration: BoxDecoration(image: NetworkImage(news?.images[index].)),);
-                  },)
-              ),
-
+                  clipBehavior: Clip.hardEdge,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: const Offset(2, 2),
+                        ),
+                      ],
+                      color: Colors.transparent),
+                  height: size.height * 0.38,
+                  child: PageView.builder(
+                    itemCount: news?.images.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container();
+                    },
+                  )),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(

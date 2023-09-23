@@ -12,7 +12,7 @@ class News extends Equatable {
   final String body2;
   final String category;
   final String shoeId;
-  int? views;
+  final int views;
 
   News({
     required this.id,
@@ -25,7 +25,7 @@ class News extends Equatable {
     required this.body2,
     required this.category,
     required this.shoeId,
-    this.views,
+    required this.views,
   });
 
   factory News.empty() {

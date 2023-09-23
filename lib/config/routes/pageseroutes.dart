@@ -9,6 +9,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../../application/auth/auth/auth_bloc.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
@@ -20,17 +21,17 @@ class HomePage extends StatelessWidget {
         listeners: [
           BlocListener<AuthBloc, AuthState>(listener: (context, state) {
             if (state is AuthStateUnauthenticated) {
-              AutoRouter.of(context).push(const SignUpPageRoute());
+              AutoRouter.of(context).push(const SignUpRoute());
             }
           }),
         ],
         child: AutoTabsScaffold(
             extendBody: true,
             routes: const [
-              LandingPageRoute(),
-              TodoPageRoute(),
-              NewsPageRoute(),
-              UserPageRoute(),
+              LandingRoute(),
+              TodoRoute(),
+              NewsRoute(),
+              UserRoute(),
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
               return Container(
