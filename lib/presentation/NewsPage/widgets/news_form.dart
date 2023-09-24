@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hypeneedz/application/news/form_bloc/bloc/form_bloc_bloc.dart';
@@ -8,9 +9,10 @@ import '../../../domain/Entitys/news.dart';
 import '../../../injection.dart';
 import '../news_text.dart';
 
-class NewsForm extends StatelessWidget {
+@RoutePage()
+class NewsFormPage extends StatelessWidget {
   final News? news;
-  const NewsForm({Key? key, required this.news}) : super(key: key);
+  const NewsFormPage({Key? key, required this.news}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class NewsForm extends StatelessWidget {
                       const SnackBar(
                           content: Text("failure"),
                           backgroundColor: Colors.redAccent)),
-                  (_) => Navigator.of(context).popUntil((route) =>
-                      route.settings.name == LandingPageRoute.name)));
+                  (_) => Navigator.of(context).popUntil(
+                      (route) => route.settings.name == LandingRoute.name)));
         },
         builder: (context, state) {
           return Scaffold(

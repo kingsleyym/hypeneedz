@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hypeneedz/application/shoes/form_bloc/bloc/form_bloc_bloc.dart';
@@ -8,9 +9,10 @@ import '../../../domain/Entitys/shoes.dart';
 import '../../../injection.dart';
 import '../NewsPage/widgets/safeoverlay.dart';
 
-class ShoesForm extends StatelessWidget {
+@RoutePage()
+class ShoesFormPage extends StatelessWidget {
   final Shoes? shoes;
-  const ShoesForm({Key? key, required this.shoes}) : super(key: key);
+  const ShoesFormPage({Key? key, required this.shoes}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class ShoesForm extends StatelessWidget {
                       const SnackBar(
                           content: Text("failure"),
                           backgroundColor: Colors.redAccent)),
-                  (_) => Navigator.of(context).popUntil((route) =>
-                      route.settings.name == LandingPageRoute.name)));
+                  (_) => Navigator.of(context).popUntil(
+                      (route) => route.settings.name == LandingRoute.name)));
         },
         builder: (context, state) {
           return Scaffold(

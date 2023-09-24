@@ -6,6 +6,7 @@ import '../../config/routes/routes.gr.dart';
 
 import '../../application/auth/auth/auth_bloc.dart';
 
+@RoutePage()
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
@@ -15,11 +16,11 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthStateAuthenticated) {
           Future.delayed(const Duration(seconds: 2), () {
-            context.router.replace(const HomePageRoute());
+            context.router.replace(const HomeRoute());
           });
         } else if (state is AuthStateUnauthenticated) {
           Future.delayed(const Duration(seconds: 2), () {
-            context.router.replace(const SignUpPageRoute());
+            context.router.replace(const SignUpRoute());
           });
         }
       },

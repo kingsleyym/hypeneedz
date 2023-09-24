@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'package:hypeneedz/api/theme_service.dart';
 import 'package:hypeneedz/application/auth/auth/auth_bloc.dart';
+import 'package:hypeneedz/config/routes/routes.dart';
 
 import 'package:hypeneedz/config/theme/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hypeneedz/injection.dart' as di;
+
 import 'firebase_options.dart';
 
 import 'injection.dart';
-import 'package:hypeneedz/config/routes/routes.gr.dart' as r;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _appRouter = r.AppRouter();
+  final _appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override

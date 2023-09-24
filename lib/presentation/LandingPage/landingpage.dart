@@ -10,6 +10,7 @@ import 'package:hypeneedz/presentation/LandingPage/widgets/newsheader.dart';
 import '../../application/auth/auth/auth_bloc.dart';
 import '../../injection.dart';
 
+@RoutePage()
 class LandingPage extends StatelessWidget {
   const LandingPage({
     Key? key,
@@ -262,7 +263,7 @@ class Picturese extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              AutoRouter.of(context).push(const ShoesPageRoute());
+              AutoRouter.of(context).push(const ShoesRoute());
             },
             child: SizedBox(
               height: 100,

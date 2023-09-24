@@ -2,15 +2,17 @@
 // ignore: file_names
 // ignore_for_file: deprecated_member_use
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/profile/bloc/profile_bloc.dart';
 import '../../../domain/Entitys/news.dart';
 import '../../../injection.dart';
 
-class NewsDetail extends StatelessWidget {
+@RoutePage()
+class NewsDetailPage extends StatelessWidget {
   final News? news;
-  const NewsDetail({
+  const NewsDetailPage({
     Key? key,
     this.news,
   }) : super(key: key);

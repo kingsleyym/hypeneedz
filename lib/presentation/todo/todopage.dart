@@ -9,6 +9,7 @@ import '../../application/shoes/observe/bloc/observer_bloc_bloc.dart';
 import '../../config/routes/routes.gr.dart';
 import '../../injection.dart';
 
+@RoutePage()
 class TodoPage extends StatelessWidget {
   String _mapFailureToMessage(ShoesFailure todoFailure) {
     switch (todoFailure.runtimeType) {
