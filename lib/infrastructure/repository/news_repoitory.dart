@@ -94,8 +94,8 @@ class NewsRepositoryImpl implements NewsRepository {
     try {
       final newsCollection = firestore.collection('news');
       final newsModel = NewsModel.fromDomain(news);
-      newsModel.views = (newsModel.views! + 1);
-      newsCollection.doc(newsModel.id).update({'views': newsModel.views});
+      final newviews = (newsModel.views! + 1);
+      newsCollection.doc(newsModel.id).update({'views': newviews});
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {

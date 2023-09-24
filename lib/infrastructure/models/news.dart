@@ -15,7 +15,7 @@ class NewsModel extends Equatable {
   final String body2;
   final String category;
   final String shoeId;
-  int? views;
+  final int views;
 
   NewsModel(
       {required this.id,
@@ -28,7 +28,7 @@ class NewsModel extends Equatable {
       required this.body2,
       required this.category,
       required this.shoeId,
-      this.views});
+      required this.views});
 
   Map<String, dynamic> toMap() {
     return {

@@ -156,7 +156,7 @@ class LandingPage extends StatelessWidget {
                   ),
                   Picturese(
                     shoepic:
-                        'https://cdn.shopify.com/s/files/1/2236/7041/products/AirJordan4BlankCanvas_W_1600x.jpg?v=1656164703',
+                        'https://cdn.shopify.com/s/files/1/2236/7041/products/AirJordan4SBPineGreen_2adc7184-fccf-49ba-a9cf-98f86c341aa7_1600x.jpg?v=1682344253',
                     name: 'Pine Green',
                     brand: 'Air Jordan 4',
                   ),

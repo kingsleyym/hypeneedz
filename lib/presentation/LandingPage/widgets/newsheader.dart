@@ -61,20 +61,21 @@ class NewsHeader extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.news.length,
                 itemBuilder: (context, index) {
-                  return PageCard(
-                    themeData: themeData,
-                    onTab: () {
+                  return InkWell(
+                    onTap: () {
+                      //
+                      print('object');
                       sl<NewsRepository>().updateViews(state.news[index]);
                       AutoRouter.of(context)
                           .push(NewsDetailRoute(news: state.news[index]));
                     },
-                    onLong: () {
-                      AutoRouter.of(context).push(NewsFormRoute(news: null));
-                    },
-                    body: state.news[index].desc,
-                    thumb: state.news[index].thumb,
-                    title: state.news[index].title,
-                    views: state.news[index].views!,
+                    child: PageCard(
+                      themeData: themeData,
+                      body: state.news[index].desc,
+                      thumb: state.news[index].thumb,
+                      title: state.news[index].title,
+                      views: state.news[index].views!,
+                    ),
                   );
                 },
               ),

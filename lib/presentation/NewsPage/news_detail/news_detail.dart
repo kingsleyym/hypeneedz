@@ -61,22 +61,39 @@ class NewsDetailPage extends StatelessWidget {
                   child: PageView.builder(
                     itemCount: news?.images.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(decoration: BoxDecoration());
+                      return Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(news!.images[index]))));
                     },
                   )),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   children: [
-                    const Icon(
-                      Icons.person,
-                      size: 20,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(news!.body,
-                        style: Theme.of(context).textTheme.headline6),
+                    BlocConsumer<ProfileBloc, ProfileState>(
+                        listener: (context, state) {
+                      if (state.state == ProfileStatus.failure) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text("Error"),
+                        ));
+                      }
+                    }, builder: (context, state) {
+                      return Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage:
+                                NetworkImage(state.user.image ?? ""),
+                          ),
+                          state.currentUser
+                              ? const Text("You")
+                              : const Text("Me"),
+                          Text(state.user.username),
+                        ],
+                      );
+                    }),
                     const Spacer(),
                     Text(news!.body),
                     const SizedBox(
@@ -164,19 +181,49 @@ class User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileBloc, ProfileState>(listener: (context, state) {
-      if (state.state == ProfileStatus.failure) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("Error"),
-        ));
-      }
-    }, builder: (context, state) {
-      return Column(
-        children: [
-          state.currentUser ? const Text("You") : const Text("Me"),
-          Text(state.user.username),
-        ],
-      );
-    });
+    return Container(
+      width: double.infinity,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              "Gefallt 83 Mal",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            RichText(
+              selectionColor: Colors.black,
+              text: const TextSpan(
+                text: 'Luca Kingsley ',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                children: <TextSpan>[
+                  TextSpan(
+                      text:
+                          ' This enables users to select the texThis enables users to select the texThis enables users to select the tex!',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.normal)),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Alle" + " 10" + " Kommentare Ansehen",
+              style: TextStyle(color: Colors.grey, fontSize: 14),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Vor 22 Stunden',
+              style: TextStyle(color: Colors.grey, fontSize: 12),
+            ),
+          ]),
+    );
   }
 }
