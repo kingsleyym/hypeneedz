@@ -69,7 +69,8 @@ class NewsDetailPage extends StatelessWidget {
                     },
                   )),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Row(
                   children: [
                     BlocConsumer<ProfileBloc, ProfileState>(
@@ -84,18 +85,19 @@ class NewsDetailPage extends StatelessWidget {
                       return Row(
                         children: [
                           CircleAvatar(
+                            radius: 12,
                             backgroundImage:
                                 NetworkImage(state.user.image ?? ""),
                           ),
-                          state.currentUser
-                              ? const Text("You")
-                              : const Text("Me"),
-                          Text(state.user.username),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(state.user.username ?? "das"),
                         ],
                       );
                     }),
                     const Spacer(),
-                    Text(news!.body),
+                    Text(news!.views.toString()),
                     const SizedBox(
                       width: 10,
                     ),
@@ -105,7 +107,7 @@ class NewsDetailPage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 2,
+                height: 1,
                 color: Theme.of(context).colorScheme.secondary,
               ),
               Expanded(

@@ -21,7 +21,7 @@ class MainUser {
 
   static MainUser empty = MainUser(
     id: '',
-    username: "not logged in",
+    username: "Luca Kingsleys",
     bio: '',
     admin: false,
     image:
